@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Page Not Found | Digital Citizen Portal</title>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-navy: #0b1329;
+            --orange-primary: #ff7f00;
+            --orange-glow: rgba(255, 127, 0, 0.5);
+            --text-white: #ffffff;
+            --text-gray: #cbd5e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-navy);
+            color: var(--text-white);
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+
+        .premium-404-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .bg-image {
+            position: absolute;
+            inset: -20px;
+            background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            animation: slowZoom 20s linear infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes slowZoom {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        .bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(11, 19, 41, 0.95) 0%, rgba(11, 19, 41, 0.7) 100%);
+            z-index: 2;
+        }
+
+
+        .glass-error-card {
+            position: relative;
+            z-index: 10;
+            background: rgba(25, 30, 45, 0.4);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 127, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 127, 0, 0.3);
+            border-radius: 30px;
+            padding: 60px 50px;
+            max-width: 650px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(255, 127, 0, 0.05);
+            animation: floatCard 6s ease-in-out infinite;
+        }
+
+        @keyframes floatCard {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+
+        .error-code-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .error-pulse {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--orange-glow) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulseRadar 3s infinite;
+            z-index: -1;
+        }
+
+        @keyframes pulseRadar {
+            0% {
+                transform: translate(-50%, -50%) scale(0.5);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(2.5);
+                opacity: 0;
+            }
+        }
+
+        .error-code {
+            font-size: 140px;
+            font-weight: 900;
+            line-height: 1;
+            margin: 0;
+            background: linear-gradient(135deg, #ffffff 0%, #ffaa00 50%, #ff7f00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 15px 35px rgba(255, 127, 0, 0.2);
+            letter-spacing: -2px;
+        }
+
+        .error-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-white);
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .error-desc {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+        }
+
+
+        .error-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+
+        .btn-outline-light {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 35px;
+            background-color: rgba(255, 255, 255, 0.03);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .btn-outline-light:hover {
+            background-color: #ffffff;
+            color: var(--primary-navy);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
+        }
+
+
+        .btn-solid-orange {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 35px;
+            background-color: var(--orange-primary);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 40px;
+            box-shadow: 0 10px 25px rgba(255, 127, 0, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid var(--orange-primary);
+            cursor: pointer;
+        }
+
+        .btn-solid-orange:hover {
+            background-color: transparent;
+            color: var(--orange-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 127, 0, 0.6);
+        }
+
+
+        @media (max-width: 768px) {
+            .glass-error-card {
+                padding: 40px 30px;
+                border-radius: 20px;
+            }
+
+            .error-code {
+                font-size: 100px;
+            }
+
+            .error-title {
+                font-size: 24px;
+            }
+
+            .error-desc {
+                font-size: 15px;
+                margin-bottom: 30px;
+            }
+
+            .error-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .btn-solid-orange,
+            .btn-outline-light {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 80px;
+            }
+
+            .glass-error-card {
+                padding: 35px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="premium-404-wrapper">
+
+        <div class="bg-image"></div>
+        <div class="bg-overlay"></div>
+
+
+        <div class="glass-error-card" data-aos="fade-up" data-aos-duration="1200">
+
+            <div class="error-code-container">
+                <div class="error-pulse"></div>
+                <h1 class="error-code">404</h1>
+            </div>
+
+            <h2 class="error-title">Page Not Found</h2>
+            <p class="error-desc">
+                We couldn't find the page you were looking for. It might have been moved, renamed, or is temporarily
+                unavailable on the Citizen Portal.
+            </p>
+
+            <div class="error-buttons">
+
+                <button onclick="history.back()" class="btn-outline-light">
+                    <i class="fa-solid fa-arrow-left"></i> Go Back
+                </button>
+
+
+                <a href="index.html" class="btn-solid-orange">
+                    <i class="fa-solid fa-house"></i> Back to Home
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            AOS.init({ once: true, offset: 0 });
+        });
+    </script>
+</body>
+
+</html>

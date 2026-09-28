@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Citizen Service Portal</title>
+    <link rel="stylesheet" href="service.css">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="loader-wrapper">
+        <div class="loader-content">
+            <div class="stack-loader">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="loader-text">Stackly</div>
+        </div>
+    </div>
+
+    <div class="header-wrapper">
+        <header class="header" id="header">
+            <nav class="navbar">
+                <a href="index.html" class="logo" data-aos="fade-right" data-aos-duration="1000"><img
+                        src="./asset/orange-logo.webp" alt="logo"></a>
+
+                <div class="nav-content" id="navContent">
+                    <div class="mobile-logo-area">
+                        <a href="index.html" class="logo"><img src="./asset/orange-logo.webp" alt="logo"></a>
+                        <button id="closeMenu" class="close-btn">&times;</button>
+                    </div>
+
+                    <div class="mobile-scroll-area">
+                        <ul class="nav-links">
+                            <li data-aos="fade-up" data-aos-delay="100" data-aos-duration="800"><a
+                                    href="index.html">Home</a></li>
+                            <li data-aos="fade-up" data-aos-delay="200" data-aos-duration="800"><a
+                                    href="about.html">About</a>
+                            </li>
+                            <li data-aos="fade-up" data-aos-delay="300" data-aos-duration="800"><a href="service.html"
+                                    class="active">Service</a>
+                            </li>
+                            <li data-aos="fade-up" data-aos-delay="400" data-aos-duration="800"><a
+                                    href="blog.html">Blog</a>
+                            </li>
+                            <li data-aos="fade-up" data-aos-delay="500" data-aos-duration="800"><a
+                                    href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+
+                        <div class="nav-actions" data-aos="fade-left" data-aos-delay="600" data-aos-duration="800">
+                            <a href="login.html" class="login-btn">Login</a>
+                            <a href="signup.html" class="signup-btn">Sign Up</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+
+    <section class="services-hero" id="services-hero">
+
+
+        <div class="srv-bg-slider">
+
+            <div class="s-slide-bg active"
+                style="background-image: url('./asset/u25.webp');">
+            </div>
+
+            <div class="s-slide-bg"
+                style="background-image: url('./asset/u10.webp');">
+            </div>
+
+
+            <div class="srv-overlay"></div>
+        </div>
+
+        <div class="srv-hero-container">
+
+
+            <div class="srv-content-card gsap-srv-fade">
+
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fa-solid fa-angles-right"></i>
+                    <span>Services</span>
+                </div>
+
+
+                <div class="srv-text-slider">
+
+
+                    <div class="s-slide-text active">
+                        <h1 class="huge-title">Everything You Need, <br><span class="text-orange">One Digital
+                                Portal</span></h1>
+                        <p class="srv-desc">Access applications, certificates, registrations, payments and other public
+                            services through a single platform.</p>
+                    </div>
+
+
+                    <div class="s-slide-text">
+                        <h1 class="huge-title">Fast, Secure & <br><span class="text-orange">Transparent</span></h1>
+                        <p class="srv-desc">Track your applications in real-time and download verified digital documents
+                            instantly from anywhere.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="srv-buttons">
+                    <a href="404page.html" class="btn-solid-orange">Find a Service <i
+                            class="fa-solid fa-magnifying-glass"></i></a>
+                    <a href="404page.html" class="btn-outline-white">Track Application <i
+                            class="fa-solid fa-location-crosshairs"></i></a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section class="smart-finder-section" id="service-finder">
+        <div class="finder-container">
+
+
+            <div class="finder-header gsap-finder-up">
+
+                <h2 class="finder-title">What Service Do <span class="text-black">You</span> <span
+                        class="text-orange">Need?</span></h2>
+                <p>Search directly or explore our major digital service categories below.</p>
+            </div>
+
+
+            <div class="search-wrapper gsap-finder-up">
+                <div class="search-bar" id="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon-left"></i>
+                    <input type="text" placeholder="Search for a government service..." class="search-input"
+                        id="search-input">
+
+
+                    <button class="btn-search desktop-search-btn" id="search-btn">Search</button>
+
+                    <button class="btn-search-icon mobile-search-btn" id="search-btn-mob"><i
+                            class="fa-solid fa-arrow-right"></i></button>
+                </div>
+
+                <div class="error-msg" id="search-error">
+                    <i class="fa-solid fa-circle-exclamation"></i> Please enter a service name to search.
+                </div>
+            </div>
+
+
+            <div class="categories-wrapper">
+
+                <div class="category-card gsap-chip" onclick="toggleCategory(this)">
+                    <div class="cat-header">
+                        <div class="cat-title-left">
+                            <i class="fa-solid fa-file-contract"></i>
+                            <span>Certificates</span>
+                        </div>
+
+                        <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+                    </div>
+
+                    <div class="cat-body">
+                        <a href="404page.html">Birth Certificate <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="404page.html">Income Certificate <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="404page.html">Community Certificate <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="category-card gsap-chip" onclick="toggleCategory(this)">
+                    <div class="cat-header">
+                        <div class="cat-title-left">
+                            <i class="fa-solid fa-house-flag"></i>
+                            <span>Property</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+                    </div>
+                    <div class="cat-body">
+                        <a href="404page.html">Property Tax <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="404page.html">Land Records <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="404page.html">Building Plan <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="category-card gsap-chip" onclick="toggleCategory(this)">
+                    <div class="cat-header">
+                        <div class="cat-title-left">
+                            <i class="fa-solid fa-car-side"></i>
+                            <span>Transport</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+                    </div>
+                    <div class="cat-body">
+                        <a href="404page.html">Driving License <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="404page.html">Vehicle Registration <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="404page.html">Road Tax <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="category-card gsap-chip" onclick="toggleCategory(this)">
+                    <div class="cat-header">
+                        <div class="cat-title-left">
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+                            <span>Welfare</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+                    </div>
+                    <div class="cat-body">
+                        <a href="404page.html">Old Age Pension <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="404page.html">Scholarships <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="404page.html">Health Schemes <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="category-card gsap-chip" onclick="toggleCategory(this)">
+                    <div class="cat-header">
+                        <div class="cat-title-left">
+                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                            <span>Tax</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+                    </div>
+                    <div class="cat-body">
+                        <a href="404page.html">Income Tax <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="404page.html">GST Filing <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="404page.html">Professional Tax <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="category-card gsap-chip" onclick="toggleCategory(this)">
+                    <div class="cat-header">
+                        <div class="cat-title-left">
+                            <i class="fa-solid fa-id-card"></i>
+                            <span>Registration</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+                    </div>
+                    <div class="cat-body">
+                        <a href="404page.html">Voter ID <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="404page.html">Aadhaar Update <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="404page.html">Marriage Registry <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="citizen-services-marquee" id="popular-services">
+        <div class="marquee-header">
+            <h2 class="marquee-title">
+                <i class="fa-solid fa-star marquee-icon"></i>
+                Popular Citizen Services
+            </h2>
+        </div>
+
+
+        <div class="marquee-wrapper marquee-left">
+            <div class="marquee-content">
+                <div class="service-item">
+                    <i class="fa-solid fa-certificate s-item-icon"></i>
+                    <div class="s-item-text">
+                        <span class="s-item-name">Birth Certificate</span>
+                        <span class="s-item-desc">Official document, essential record.</span>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="fa-solid fa-landmark s-item-icon"></i>
+                    <div class="s-item-text">
+                        <span class="s-item-name">Income Certificate</span>
+                        <span class="s-item-desc">Verify your financial status.</span>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="fa-solid fa-house-user s-item-icon"></i>
+                    <div class="s-item-text">
+                        <span class="s-item-name">Residence Certificate</span>
+                        <span class="s-item-desc">Confirm your living address.</span>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="fa-solid fa-money-bill-trend-up s-item-icon"></i>
+                    <div class="s-item-text">
+                        <span class="s-item-name">Property Tax</span>
+                        <span class="s-item-desc">Submit dues for your real estate.</span>
+                    </div>
+                </div>
+
+
+                <div class="service-item">
+                    <i class="fa-solid fa-certificate s-item-icon"></i>
+                    <div class="s-item-text">
+                        <span class="s-item-name">Birth Certificate</span>
+                        <span class="s-item-desc">Official document, essential record.</span>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="fa-solid fa-landmark s-item-icon"></i>
+                    <div class="s-item-text">
+                        <span class="s-item-name">Income Certificate</span>
+                        <span class="s-item-desc">Verify your financial status.</span>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="fa-solid fa-house-user s-item-icon"></i>
+                    <div class="s-item-text">
+                        <span class="s-item-name">Residence Certificate</span>
+                        <span class="s-item-desc">Confirm your living address.</span>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="fa-solid fa-money-bill-trend-up s-item-icon"></i>
+                    <div class="s-item-text">
+                        <span class="s-item-name">Property Tax</span>
+                        <span class="s-item-desc">Submit dues for your real estate.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="marquee-wrapper marquee-right">
+            <div class="marquee-content">
+                <div class="service-item">
+                    <i class="fa-solid fa-briefcase s-item-icon"></i>
+                    <div class="s-item-text">
+                        <span class="s-item-name">Business License</span>
+                        <span class="s-item-desc">Legal authorization to operate.</span>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="fa-solid fa-car-side s-item-icon"></i>
+                    <div class="s-item-text">
+                        <span class="s-item-name">Vehicle Services</span>
+                        <span class="s-item-desc">Registration, permit, and renew.</span>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="fa-solid fa-people-roof s-item-icon"></i>
+                    <div class="s-item-text">
+                        <span class="s-item-name">Welfare Schemes</span>
+                        <span class="s-item-desc">Access government support.</span>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="fa-solid fa-file-shield s-item-icon"></i>
+                    <div class="s-item-text">
+                        <span class="s-item-name">Document Verification</span>
+                        <span class="s-item-desc">Authenticity checks and approvals.</span>
+                    </div>
+                </div>
+
+
+                <div class="service-item">
+                    <i class="fa-solid fa-briefcase s-item-icon"></i>
+                    <div class="s-item-text">
+                        <span class="s-item-name">Business License</span>
+                        <span class="s-item-desc">Legal authorization to operate.</span>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="fa-solid fa-car-side s-item-icon"></i>
+                    <div class="s-item-text">
+                        <span class="s-item-name">Vehicle Services</span>
+                        <span class="s-item-desc">Registration, permit, and renew.</span>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="fa-solid fa-people-roof s-item-icon"></i>
+                    <div class="s-item-text">
+                        <span class="s-item-name">Welfare Schemes</span>
+                        <span class="s-item-desc">Access government support.</span>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="fa-solid fa-file-shield s-item-icon"></i>
+                    <div class="s-item-text">
+                        <span class="s-item-name">Document Verification</span>
+                        <span class="s-item-desc">Authenticity checks and approvals.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="services-category-section" id="categories">
+        <div class="category-container">
+
+
+            <div class="category-header gsap-cat-up">
+                <h2 class="gradient-title">Services by Category</h2>
+                <p>Explore specialized citizen services tailored to your needs from our single digital portal.</p>
+            </div>
+
+
+            <div class="category-grid" id="category-accordion">
+
+
+                <div class="category-card gsap-cat-card">
+                    <div class="cat-card-header">
+                        <div class="cat-header-left">
+                            <span class="cat-number">01</span>
+                            <div class="cat-icon-wrap"><i class="fa-solid fa-stamp"></i></div>
+                            <h4>Certificates</h4>
+                        </div>
+                        <i class="fa-solid fa-plus toggle-icon"></i>
+                    </div>
+
+                    <div class="cat-card-body">
+                        <ul class="sub-services-list">
+                            <li><i class="fa-solid fa-check"></i> Birth Certificate</li>
+                            <li><i class="fa-solid fa-check"></i> Death Certificate</li>
+                            <li><i class="fa-solid fa-check"></i> Income Certificate</li>
+                            <li><i class="fa-solid fa-check"></i> Residence Certificate</li>
+                        </ul>
+                        <a href="404page.html" class="explore-link">Explore Services <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+
+                <div class="category-card gsap-cat-card">
+                    <div class="cat-card-header">
+                        <div class="cat-header-left">
+                            <span class="cat-number">02</span>
+                            <div class="cat-icon-wrap"><i class="fa-solid fa-users-line"></i></div>
+                            <h4>Civil Registration</h4>
+                        </div>
+                        <i class="fa-solid fa-plus toggle-icon"></i>
+                    </div>
+                    <div class="cat-card-body">
+                        <ul class="sub-services-list">
+                            <li><i class="fa-solid fa-check"></i> Marriage Registration</li>
+                            <li><i class="fa-solid fa-check"></i> Divorced Record</li>
+                            <li><i class="fa-solid fa-check"></i> Change of Name</li>
+                        </ul>
+                        <a href="404page.html" class="explore-link">Explore Services <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+
+                <div class="category-card gsap-cat-card">
+                    <div class="cat-card-header">
+                        <div class="cat-header-left">
+                            <span class="cat-number">03</span>
+                            <div class="cat-icon-wrap"><i class="fa-solid fa-house-chimney-window"></i></div>
+                            <h4>Property & Land</h4>
+                        </div>
+                        <i class="fa-solid fa-plus toggle-icon"></i>
+                    </div>
+                    <div class="cat-card-body">
+                        <ul class="sub-services-list">
+                            <li><i class="fa-solid fa-check"></i> Land Records</li>
+                            <li><i class="fa-solid fa-check"></i> Building Plan</li>
+                            <li><i class="fa-solid fa-check"></i> Property Tax</li>
+                            <li><i class="fa-solid fa-check"></i> Transfer of Ownership</li>
+                        </ul>
+                        <a href="404page.html" class="explore-link">Explore Services <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+
+                <div class="category-card gsap-cat-card">
+                    <div class="cat-card-header">
+                        <div class="cat-header-left">
+                            <span class="cat-number">04</span>
+                            <div class="cat-icon-wrap"><i class="fa-solid fa-car-side"></i></div>
+                            <h4>Transport</h4>
+                        </div>
+                        <i class="fa-solid fa-plus toggle-icon"></i>
+                    </div>
+                    <div class="cat-card-body">
+                        <ul class="sub-services-list">
+                            <li><i class="fa-solid fa-check"></i> Driving License</li>
+                            <li><i class="fa-solid fa-check"></i> Vehicle Registration</li>
+                            <li><i class="fa-solid fa-check"></i> Learner's Permit</li>
+                        </ul>
+                        <a href="404page.html" class="explore-link">Explore Services <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+
+                <div class="category-card gsap-cat-card">
+                    <div class="cat-card-header">
+                        <div class="cat-header-left">
+                            <span class="cat-number">05</span>
+                            <div class="cat-icon-wrap"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                            <h4>Welfare & Social Services</h4>
+                        </div>
+                        <i class="fa-solid fa-plus toggle-icon"></i>
+                    </div>
+                    <div class="cat-card-body">
+                        <ul class="sub-services-list">
+                            <li><i class="fa-solid fa-check"></i> Old Age Pension</li>
+                            <li><i class="fa-solid fa-check"></i> Scholarships</li>
+                            <li><i class="fa-solid fa-check"></i> Widow Pension</li>
+                            <li><i class="fa-solid fa-check"></i> Healthcare Schemes</li>
+                        </ul>
+                        <a href="404page.html" class="explore-link">Explore Services <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+
+                <div class="category-card gsap-cat-card">
+                    <div class="cat-card-header">
+                        <div class="cat-header-left">
+                            <span class="cat-number">06</span>
+                            <div class="cat-icon-wrap"><i class="fa-solid fa-briefcase"></i></div>
+                            <h4>Business & Licenses</h4>
+                        </div>
+                        <i class="fa-solid fa-plus toggle-icon"></i>
+                    </div>
+                    <div class="cat-card-body">
+                        <ul class="sub-services-list">
+                            <li><i class="fa-solid fa-check"></i> Trade License</li>
+                            <li><i class="fa-solid fa-check"></i> Food License</li>
+                            <li><i class="fa-solid fa-check"></i> Shop Registration</li>
+                        </ul>
+                        <a href="404page.html" class="explore-link">Explore Services <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="featured-services-section" id="featured">
+        <div class="feat-container">
+
+
+            <div class="feat-header gsap-feat-up">
+                <h2 class="gradient-title">Featured Services</h2>
+                <p>Access our most requested digital documents and services instantly.</p>
+            </div>
+
+
+            <div class="layered-cards-wrapper gsap-stack-reveal">
+
+
+                <div class="layer-card lc-1">
+                    <div class="lc-watermark">01</div>
+                    <div class="lc-top">
+                        <div class="lc-icon"><i class="fa-solid fa-file-contract"></i></div>
+                        <h3>Birth Certificate</h3>
+                    </div>
+                    <div class="lc-hidden-content">
+                        <p>Apply for a verified digital copy of your birth record securely.</p>
+                        <a href="404page.html" class="btn-apply">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+
+                <div class="layer-card lc-2">
+                    <div class="lc-watermark">02</div>
+                    <div class="lc-top">
+                        <div class="lc-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                        <h3>Income Certificate</h3>
+                    </div>
+                    <div class="lc-hidden-content">
+                        <p>Obtain official proof of your financial status for welfare schemes.</p>
+                        <a href="404page.html" class="btn-apply">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+
+                <div class="layer-card lc-3">
+                    <div class="lc-watermark">03</div>
+                    <div class="lc-top">
+                        <div class="lc-icon"><i class="fa-solid fa-house-user"></i></div>
+                        <h3>Residence Certificate</h3>
+                    </div>
+                    <div class="lc-hidden-content">
+                        <p>Verify your permanent living address for documentation purposes.</p>
+                        <a href="404page.html" class="btn-apply">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+
+                <div class="layer-card lc-4">
+                    <div class="lc-watermark">04</div>
+                    <div class="lc-top">
+                        <div class="lc-icon"><i class="fa-solid fa-city"></i></div>
+                        <h3>Property Services</h3>
+                    </div>
+                    <div class="lc-hidden-content">
+                        <p>Pay property tax, view land records, and apply for building plans.</p>
+                        <a href="404page.html" class="btn-apply">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="quick-services-section" id="quick">
+        <div class="qs-container">
+
+            <div class="qs-orbit-wrapper">
+
+
+                <div class="qs-center gsap-qs-center">
+                    <h2 class="qs-huge-title">Need It<br><span class="text-orange">Quickly?</span></h2>
+                    <p>Hover an icon to get started.</p>
+                </div>
+
+
+
+
+                <div class="qs-item orbit-pos-1 gsap-qs-item">
+                    <div class="qs-float-anim float-delay-1">
+                        <div class="qs-pill-wrapper">
+                            <div class="qs-pill">
+                                <div class="qs-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                                <div class="qs-details">
+                                    <h4>Pay Tax</h4>
+                                    <p>Clear your property and water tax instantly.</p>
+                                    <a href="404page.html"> Start Now <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="qs-default-title">Pay Tax</div>
+                    </div>
+                </div>
+
+
+                <div class="qs-item orbit-pos-2 gsap-qs-item">
+                    <div class="qs-float-anim float-delay-2">
+                        <div class="qs-pill-wrapper">
+                            <div class="qs-pill">
+                                <div class="qs-icon"><i class="fa-solid fa-file-arrow-down"></i></div>
+                                <div class="qs-details">
+                                    <h4>Download Cert.</h4>
+                                    <p>Get digital copies of your certificates.</p>
+                                    <a href="404page.html">Start Now <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="qs-default-title">Download Cert.</div>
+                    </div>
+                </div>
+
+
+                <div class="qs-item orbit-pos-3 gsap-qs-item">
+                    <div class="qs-float-anim float-delay-3">
+                        <div class="qs-pill-wrapper">
+                            <div class="qs-pill">
+                                <div class="qs-icon"><i class="fa-solid fa-magnifying-glass-location"></i></div>
+                                <div class="qs-details">
+                                    <h4>Track App</h4>
+                                    <p>Live status of your submitted applications.</p>
+                                    <a href="404page.html">Start Now <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="qs-default-title">Track App</div>
+                    </div>
+                </div>
+
+
+                <div class="qs-item orbit-pos-4 gsap-qs-item">
+                    <div class="qs-float-anim float-delay-4">
+                        <div class="qs-pill-wrapper">
+                            <div class="qs-pill">
+                                <div class="qs-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                                <div class="qs-details">
+                                    <h4>Verify Doc</h4>
+                                    <p>Authenticate government e-documents securely.</p>
+                                    <a href="404page.html">Start Now <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="qs-default-title">Verify Doc</div>
+                    </div>
+                </div>
+
+
+                <div class="qs-item orbit-pos-5 gsap-qs-item">
+                    <div class="qs-float-anim float-delay-5">
+                        <div class="qs-pill-wrapper">
+                            <div class="qs-pill">
+                                <div class="qs-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                                <div class="qs-details">
+                                    <h4>Appointment</h4>
+                                    <p>Book a slot for physical office visits.</p>
+                                    <a href="404page.html">Start Now <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="qs-default-title">Appointment</div>
+                    </div>
+                </div>
+
+
+                <div class="qs-item orbit-pos-6 gsap-qs-item">
+                    <div class="qs-float-anim float-delay-6">
+                        <div class="qs-pill-wrapper">
+                            <div class="qs-pill">
+                                <div class="qs-icon"><i class="fa-solid fa-comment-dots"></i></div>
+                                <div class="qs-details">
+                                    <h4>Grievance</h4>
+                                    <p>File a complaint and track resolutions.</p>
+                                    <a href="404page.html">Start Now <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="qs-default-title">Grievance</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section class="service-status-section" id="status">
+        <div class="status-container">
+
+            <div class="status-grid">
+
+
+                <div class="status-left gsap-status-left">
+                    <div class="tracker-card">
+                        <div class="tracker-header">
+                            <span class="app-id">Application #CS10245</span>
+                            <span class="live-badge"><i class="fa-solid fa-circle-dot"></i> Live Status</span>
+                        </div>
+
+
+                        <div class="tracker-steps">
+
+                            <div class="tracker-line-bg"></div>
+                            <div class="tracker-line-fill gsap-tracker-fill"></div>
+
+
+                            <div class="t-step completed">
+                                <div class="t-icon"><i class="fa-solid fa-check"></i></div>
+                                <div class="t-content">
+                                    <h5>Submitted</h5>
+                                    <p>Application received successfully</p>
+                                </div>
+                            </div>
+
+
+                            <div class="t-step completed">
+                                <div class="t-icon"><i class="fa-solid fa-check"></i></div>
+                                <div class="t-content">
+                                    <h5>Documents</h5>
+                                    <p>All e-documents attached</p>
+                                </div>
+                            </div>
+
+
+                            <div class="t-step completed">
+                                <div class="t-icon"><i class="fa-solid fa-check"></i></div>
+                                <div class="t-content">
+                                    <h5>Verification</h5>
+                                    <p>Officer clearance approved</p>
+                                </div>
+                            </div>
+
+
+                            <div class="t-step active">
+                                <div class="t-icon pulse-dot"></div>
+                                <div class="t-content">
+                                    <h5>Review</h5>
+                                    <p>Final department audit in progress</p>
+                                </div>
+                            </div>
+
+
+                            <div class="t-step pending">
+                                <div class="t-icon">○</div>
+                                <div class="t-content">
+                                    <h5>Completed</h5>
+                                    <p>Digital certificate generation</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="status-right gsap-status-right">
+                    <div class="status-text-content">
+                        <h2 class="gradient-title">Every Application <br>Has a <span class="text-orange">Story</span>
+                        </h2>
+                        <p class="status-desc">We ensure total transparency at every step of your digital governance
+                            journey. Track, verify, and receive your services with absolute confidence.</p>
+                    </div>
+
+
+                    <div class="stats-grid">
+
+                        <div class="stat-box">
+                            <h3 class="stat-number"><span class="counter" data-target="24">0</span>/<span
+                                    class="counter" data-target="7">0</span></h3>
+                            <p class="stat-label"><i class="fa-solid fa-clock"></i> Online Access</p>
+                        </div>
+
+                        <div class="stat-box">
+                            <h3 class="stat-number"><span class="counter" data-target="100">0</span>+</h3>
+                            <p class="stat-label"><i class="fa-solid fa-layer-group"></i> Digital Services</p>
+                        </div>
+
+                        <div class="stat-box">
+                            <h3 class="stat-number"><span class="counter" data-target="100">0</span>%</h3>
+                            <p class="stat-label"><i class="fa-solid fa-shield-halved"></i> Real-Time Tracking</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section class="final-cta-section" id="cta">
+
+        <div class="cta-bg-wrapper">
+            <div class="cta-bg-image"
+                style="background-image: url('./asset/u29.webp');">
+            </div>
+            <div class="cta-overlay"></div>
+        </div>
+
+        <div class="cta-container gsap-cta-content">
+
+            <div class="cta-content-box">
+                <h2 class="cta-huge-title">One Portal. <br><span class="text-orange">Every Essential Service.</span>
+                </h2>
+                <p class="cta-desc">Choose a service, submit your application and track the entire process online.</p>
+
+                <div class="cta-buttons">
+                    <a href="404page.html" class="btn-solid-orange">Explore All Services <i
+                            class="fa-solid fa-arrow-right"></i></a>
+                    <a href="404page.html" class="btn-outline-white">Track Application <i
+                            class="fa-solid fa-location-crosshairs"></i></a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="cta-marquee-wrapper">
+            <div class="cta-marquee-track">
+                <span>Secure • Accessible • Transparent • Digital • Citizen First</span>
+                <span>•</span>
+                <span>Secure • Accessible • Transparent • Digital • Citizen First</span>
+                <span>•</span>
+                <span>Secure • Accessible • Transparent • Digital • Citizen First</span>
+                <span>•</span>
+                <span>Secure • Accessible • Transparent • Digital • Citizen First</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="footer">
+        <div class="footer-container">
+            <div class="footer-col" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                <div class="footer-logo">
+                    <a href="index.html" class="logo"><img src="./asset/orange-logo.webp" alt="logo"></a>
+                </div>
+                <p>Your unified platform for accessing government services seamlessly. Apply for certificates, track
+                    applications, and pay taxes online with ease.</p>
+                <div class="social-links">
+                    <a href="404page.html"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="404page.html"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="404page.html"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="404page.html"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Portal</a></li>
+                    <li><a href="service.html">All Services</a></li>
+                    <li><a href="blog.html">Track Application</a></li>
+                    <li><a href="contact.html">Help & Support</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                <h4>Top Services</h4>
+                <ul>
+                    <li><a href="404page.html">Revenue Certificates</a></li>
+                    <li><a href="404page.html">Civil Supplies (Ration)</a></li>
+                    <li><a href="404page.html">Pensions & Welfare</a></li>
+                    <li><a href="404page.html">Transport & RTO</a></li>
+                    <li><a href="404page.html">Utility Bill Payments</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact-info" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>info@thestackly.gov.in</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <span>9876543210</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil,
+                            Salem</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-clock"></i>
+                        <span>Mon - Sat: 9:00 AM - 6:00 PM</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Online Citizen Service Portal. All rights reserved.</p>
+            <div class="legal-links">
+                <a href="404page.html">Privacy Policy</a>
+                <a href="404page.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+
+            gsap.from(".gsap-srv-fade", {
+                opacity: 0,
+                y: 50,
+                duration: 1.2,
+                delay: 0.2,
+                ease: "power3.out"
+            });
+
+
+            const srvBgs = document.querySelectorAll('.s-slide-bg');
+            const srvTexts = document.querySelectorAll('.s-slide-text');
+            let srvCurrentSlide = 0;
+            const srvInterval = 5000;
+
+            function changeSrvSlide() {
+                if (srvBgs.length === 0 || srvTexts.length === 0) return;
+
+
+                srvBgs[srvCurrentSlide].classList.remove('active');
+                srvTexts[srvCurrentSlide].classList.remove('active');
+
+
+                srvCurrentSlide = (srvCurrentSlide + 1) % srvTexts.length;
+
+
+                srvBgs[srvCurrentSlide].classList.add('active');
+                srvTexts[srvCurrentSlide].classList.add('active');
+
+
+                gsap.fromTo(srvTexts[srvCurrentSlide].querySelector('.huge-title'),
+                    { opacity: 0, y: 30 },
+                    { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+                );
+                gsap.fromTo(srvTexts[srvCurrentSlide].querySelector('.srv-desc'),
+                    { opacity: 0, y: 20 },
+                    { opacity: 1, y: 0, duration: 0.8, delay: 0.2, ease: "power2.out" }
+                );
+            }
+
+
+            if (srvTexts.length > 0) {
+                setInterval(changeSrvSlide, srvInterval);
+            }
+
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.from(".gsap-finder-up", {
+                scrollTrigger: { trigger: ".smart-finder-section", start: "top 85%" },
+                y: 40, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out"
+            });
+
+
+
+
+            const categoryCards = gsap.utils.toArray('.gsap-chip');
+
+            categoryCards.forEach((card, index) => {
+                gsap.fromTo(card,
+                    { y: 30, opacity: 0 },
+                    {
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 95%",
+                            toggleActions: "play none none reverse"
+                        },
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.5,
+                        delay: index * 0.1,
+                        ease: "power2.out"
+                    }
+                );
+            });
+
+
+            const searchInput = document.getElementById("search-input");
+            const searchBox = document.getElementById("search-box");
+            const errorMsg = document.getElementById("search-error");
+
+            const searchBtnDesktop = document.getElementById("search-btn");
+            const searchBtnMobile = document.getElementById("search-btn-mob");
+
+            searchInput.addEventListener("focus", () => {
+                searchBox.classList.add("active-glow");
+                searchBox.classList.remove("error-state");
+                errorMsg.classList.remove("show-error");
+            });
+
+            searchInput.addEventListener("blur", () => {
+                searchBox.classList.remove("active-glow");
+            });
+
+            const handleSearch = () => {
+                const query = searchInput.value.trim();
+
+                if (query === "") {
+                    searchBox.classList.remove("active-glow");
+                    searchBox.classList.add("error-state");
+                    errorMsg.classList.add("show-error");
+
+                    setTimeout(() => { searchBox.classList.remove("error-state"); }, 400);
+                } else {
+                    errorMsg.classList.remove("show-error");
+                    searchBox.classList.remove("error-state");
+                    window.location.href = '404page.html';
+                }
+            };
+
+            if (searchBtnDesktop) searchBtnDesktop.addEventListener("click", handleSearch);
+            if (searchBtnMobile) searchBtnMobile.addEventListener("click", handleSearch);
+        });
+
+
+        window.toggleCategory = function (element) {
+            const allCards = document.querySelectorAll('.category-card');
+
+            allCards.forEach(card => {
+                if (card !== element) {
+                    card.classList.remove('active-open');
+                }
+            });
+
+            element.classList.toggle('active-open');
+        };
+
+
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const marqueeLeft = document.querySelector('.marquee-left .marquee-content');
+            const marqueeRight = document.querySelector('.marquee-right .marquee-content');
+
+            const setInfiniteAnimation = (contentElement, direction) => {
+                const totalWidth = contentElement.scrollWidth;
+
+                const moveDistance = totalWidth / 2;
+
+                const animationName = `scroll-${direction}-${Math.random().toString(36).substr(2, 9)}`;
+                const keyframes = `
+            @keyframes ${animationName} {
+                0% { transform: translateX(${direction === 'left' ? '0' : `-${moveDistance}px`}); }
+                100% { transform: translateX(${direction === 'left' ? `-${moveDistance}px` : '0'}); }
+            }
+        `;
+
+                let styleSheet = document.getElementById('marquee-keyframes');
+                if (!styleSheet) {
+                    styleSheet = document.createElement("style");
+                    styleSheet.id = 'marquee-keyframes';
+                    document.head.appendChild(styleSheet);
+                }
+                styleSheet.sheet.insertRule(keyframes, styleSheet.sheet.cssRules.length);
+
+
+                contentElement.style.animation = `${animationName} 50s linear infinite`;
+            };
+
+            if (marqueeLeft) setInfiniteAnimation(marqueeLeft, 'left');
+            if (marqueeRight) setInfiniteAnimation(marqueeRight, 'right');
+
+
+
+            const serviceItems = document.querySelectorAll('.service-item');
+
+            serviceItems.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    const siblingItems = item.closest('.marquee-content').querySelectorAll('.service-item');
+                    siblingItems.forEach(sib => {
+                        if (sib !== item) {
+                            sib.style.opacity = '0.4';
+                            sib.style.transition = 'opacity 0.4s ease';
+                        }
+                    });
+                });
+
+                item.addEventListener('mouseleave', () => {
+                    const siblingItems = item.closest('.marquee-content').querySelectorAll('.service-item');
+                    siblingItems.forEach(sib => {
+                        sib.style.opacity = '1';
+                        sib.style.transition = 'opacity 0.4s ease';
+                    });
+                });
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            gsap.registerPlugin(ScrollTrigger);
+
+
+            gsap.from(".gsap-cat-up", {
+                scrollTrigger: {
+                    trigger: ".services-category-section",
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                },
+                y: 40,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+
+
+
+            const categoryCards = gsap.utils.toArray('.gsap-cat-card');
+
+            categoryCards.forEach((card, index) => {
+                gsap.fromTo(card,
+                    { y: 40, opacity: 0 },
+                    {
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 95%",
+                            toggleActions: "play none none none"
+                        },
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.6,
+                        delay: index * 0.1,
+                        ease: "power2.out"
+                    }
+                );
+            });
+
+
+
+            const cards = document.querySelectorAll('.category-card');
+
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+
+                    if (window.innerWidth <= 992) {
+
+
+                        cards.forEach(c => {
+                            if (c !== card) {
+                                c.classList.remove('active-touch');
+                            }
+                        });
+
+
+                        card.classList.toggle('active-touch');
+                    }
+                });
+            });
+
+        });
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            gsap.registerPlugin(ScrollTrigger);
+
+
+            gsap.from(".gsap-feat-up", {
+                scrollTrigger: {
+                    trigger: ".featured-services-section",
+                    start: "top 85%"
+                },
+                y: 40, opacity: 0, duration: 1, ease: "power3.out"
+            });
+
+
+            const layerCards = gsap.utils.toArray('.layer-card');
+
+            gsap.fromTo(layerCards,
+                {
+                    x: 100,
+                    opacity: 0
+                },
+                {
+                    scrollTrigger: {
+                        trigger: ".layered-cards-wrapper",
+                        start: "top 85%",
+                        toggleActions: "play none none none"
+                    },
+                    x: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    stagger: 0.15,
+                    ease: "back.out(1.2)"
+                }
+            );
+
+        });
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            gsap.registerPlugin(ScrollTrigger);
+
+
+            let mm = gsap.matchMedia();
+
+
+            mm.add("(min-width: 769px)", () => {
+
+
+                gsap.from(".gsap-qs-center", {
+                    scrollTrigger: { trigger: ".quick-services-section", start: "top 80%" },
+                    scale: 0.5, opacity: 0, duration: 1, ease: "back.out(1.5)"
+                });
+
+
+                const quickItems = gsap.utils.toArray('.gsap-qs-item');
+                quickItems.forEach((item, index) => {
+                    gsap.fromTo(item,
+                        { scale: 0, opacity: 0 },
+                        {
+                            scrollTrigger: { trigger: ".quick-services-section", start: "top 75%", toggleActions: "play none none none" },
+                            scale: 1, opacity: 1, duration: 0.6, delay: index * 0.15, ease: "back.out(2)"
+                        }
+                    );
+                });
+
+                return () => { };
+            });
+
+
+            mm.add("(max-width: 768px)", () => {
+
+
+                gsap.from(".gsap-qs-center", {
+                    scrollTrigger: { trigger: ".quick-services-section", start: "top 85%" },
+                    y: 30, opacity: 0, duration: 1, ease: "power2.out"
+                });
+
+
+                const quickItems = gsap.utils.toArray('.gsap-qs-item');
+                quickItems.forEach((item, index) => {
+                    gsap.fromTo(item,
+                        { y: 30, opacity: 0 },
+                        {
+                            scrollTrigger: { trigger: ".quick-services-section", start: "top 85%", toggleActions: "play none none none" },
+                            y: 0, opacity: 1, duration: 0.5, delay: index * 0.1, ease: "power2.out"
+                        }
+                    );
+                });
+
+                return () => { };
+            });
+
+        });
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            gsap.registerPlugin(ScrollTrigger);
+
+
+            gsap.from(".gsap-status-left", {
+                scrollTrigger: { trigger: ".service-status-section", start: "top 80%" },
+                x: -50, opacity: 0, duration: 1, ease: "power3.out"
+            });
+
+            gsap.from(".gsap-status-right", {
+                scrollTrigger: { trigger: ".service-status-section", start: "top 80%" },
+                x: 50, opacity: 0, duration: 1, ease: "power3.out"
+            });
+
+
+            gsap.to(".gsap-tracker-fill", {
+                scrollTrigger: {
+                    trigger: ".tracker-steps",
+                    start: "top center",
+                    end: "bottom center",
+                    scrub: 1
+                },
+                height: "75%",
+                ease: "none"
+            });
+
+
+            const counters = document.querySelectorAll('.counter');
+            let animated = false;
+
+            ScrollTrigger.create({
+                trigger: ".stats-grid",
+                start: "top 85%",
+                onEnter: () => {
+                    if (animated) return;
+                    animated = true;
+
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        let count = 0;
+                        const speed = target / 40;
+
+                        const updateCount = () => {
+                            count += speed;
+                            if (count < target) {
+                                counter.innerText = Math.ceil(count);
+                                setTimeout(updateCount, 30);
+                            } else {
+                                counter.innerText = target;
+                            }
+                        };
+                        updateCount();
+                    });
+                }
+            });
+
+        });
+
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            gsap.registerPlugin(ScrollTrigger);
+
+
+            gsap.from(".gsap-cta-content", {
+                scrollTrigger: {
+                    trigger: ".final-cta-section",
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Digital Citizen Portal</title>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="admin_dashboard.css">
+
+
+    <script>
+        if (!sessionStorage.getItem('userEmail')) {
+            window.location.replace("login.html");
+        }
+    </script>
+</head>
+
+<body>
+
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+
+    <nav class="sidebar" id="sidebar">
+        <div class="logo-container">
+            <a href="index.html"><img src="./asset/orange-logo.webp" alt="logo"></a>
+            <div class="dashboard-badge">Official Admin</div>
+        </div>
+
+        <div class="nav-sections">
+            <a class="nav-item active" onclick="switchTab('tab-overview', this, 'Portal Overview')"><i
+                    class="fas fa-chart-pie"></i> Dashboard</a>
+            <a class="nav-item" onclick="switchTab('tab-requests', this, 'Citizen Requests')"><i
+                    class="fas fa-file-signature"></i> Requests</a>
+            <a class="nav-item" onclick="switchTab('tab-approved', this, 'Approved Services')"><i
+                    class="fas fa-check-circle"></i> Approved</a>
+            <a class="nav-item" onclick="switchTab('tab-payments', this, 'Tax & Payments')"><i
+                    class="fas fa-wallet"></i> Payments</a>
+            <a class="nav-item" onclick="switchTab('tab-feedback', this, 'Citizen Feedback')"><i
+                    class="fas fa-comments"></i> Feedback</a>
+            <a class="nav-item" onclick="switchTab('tab-settings', this, 'Portal Settings')"><i class="fas fa-cog"></i>
+                Settings</a>
+        </div>
+
+        <div class="profile-card">
+            <div class="profile-avatar"><i class="fas fa-user-shield"></i></div>
+            <div class="profile-info">
+                <h4 id="userNameDisplay">Official Officer</h4>
+                <p id="userEmailDisplay">admin@gov.in</p>
+            </div>
+        </div>
+    </nav>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div class="topbar-left">
+                <div class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></div>
+                <h2 id="dynamic-page-title" class="page-title">Portal Overview</h2>
+            </div>
+            <div class="topbar-right">
+                <button onclick="window.location.href='index.html'" class="header-btn btn-home" title="Home">
+                    <i class="fas fa-house"></i> <span class="hide-mobile">Home</span>
+                </button>
+                <button onclick="logout()" class="header-btn btn-logout" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i> <span class="hide-mobile">Logout</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="dashboard-body">
+
+            <!-- ==========================================
+                 TAB 1: OVERVIEW (8 Sections - Fully Packed)
+            =========================================== -->
+            <div id="tab-overview" class="content-tab active-tab">
+
+
+                <div class="grid-4">
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-icon bg-info"><i class="fas fa-users"></i></div>
+                        <div class="stat-details">
+                            <p>Total Citizens</p>
+                            <h2>14.2K</h2>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="stat-icon bg-orange"><i class="fas fa-file-alt"></i></div>
+                        <div class="stat-details">
+                            <p>Pending Requests</p>
+                            <h2>854</h2>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-icon bg-success"><i class="fas fa-check-double"></i></div>
+                        <div class="stat-details">
+                            <p>Approved Today</p>
+                            <h2>128</h2>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="250">
+                        <div class="stat-icon bg-danger"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="stat-details">
+                            <p>Escalations</p>
+                            <h2>12</h2>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="grid-2">
+                    <div class="premium-card" data-aos="fade-up">
+                        <h3 class="section-title">Service Requests Analytics</h3>
+                        <div class="chart-wrapper">
+                            <canvas id="serviceChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="premium-card" data-aos="fade-up">
+                        <h3 class="section-title">Latest Portal Logins</h3>
+                        <div class="table-wrapper">
+                            <table class="premium-table">
+                                <tr>
+                                    <th>User ID</th>
+                                    <th>Location</th>
+                                    <th>Time</th>
+                                    <th>Status</th>
+                                </tr>
+                                <tr>
+                                    <td>CTZ-8890</td>
+                                    <td>Chennai</td>
+                                    <td>10 Mins ago</td>
+                                    <td><span class="badge success">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>CTZ-1123</td>
+                                    <td>Madurai</td>
+                                    <td>1 Hr ago</td>
+                                    <td><span class="badge success">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>CTZ-4566</td>
+                                    <td>Coimbatore</td>
+                                    <td>2 Hrs ago</td>
+                                    <td><span class="badge warning">Idle</span></td>
+                                </tr>
+                                <tr>
+                                    <td>CTZ-9901</td>
+                                    <td>Trichy</td>
+                                    <td>5 Hrs ago</td>
+                                    <td><span class="badge danger">Failed</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="grid-2">
+                    <div class="premium-card" data-aos="fade-up">
+                        <h3 class="section-title">System Resources Status</h3>
+                        <div class="mb-15">
+                            <div class="flex-row justify-between mb-5"><span class="text-sm font-bold">CPU
+                                    Usage</span><span class="text-sm">45%</span></div>
+                            <div class="progress-container">
+                                <div class="progress-bar bg-success" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        <div class="mb-15">
+                            <div class="flex-row justify-between mb-5"><span class="text-sm font-bold">Memory
+                                    (RAM)</span><span class="text-sm">78%</span></div>
+                            <div class="progress-container">
+                                <div class="progress-bar bg-warning" style="width: 78%;"></div>
+                            </div>
+                        </div>
+                        <div class="mb-15">
+                            <div class="flex-row justify-between mb-5"><span class="text-sm font-bold">Database
+                                    Storage</span><span class="text-sm">92%</span></div>
+                            <div class="progress-container">
+                                <div class="progress-bar bg-danger" style="width: 92%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="premium-card" data-aos="fade-up">
+                        <h3 class="section-title">Quick Admin Actions</h3>
+                        <div class="grid-2" style="gap: 15px; margin-bottom: 0;">
+                            <button onclick="window.location.href='404page.html'" class="btn btn-outline w-100"
+                                style="padding: 15px;"><i class="fas fa-bullhorn text-orange"></i> Broadcast
+                                Message</button>
+                            <button onclick="window.location.href='404page.html'" class="btn btn-outline w-100"
+                                style="padding: 15px;"><i class="fas fa-file-export text-info"></i> Export Data
+                                CSV</button>
+                            <button onclick="window.location.href='404page.html'" class="btn btn-outline w-100"
+                                style="padding: 15px;"><i class="fas fa-user-plus text-success"></i> Add
+                                Official</button>
+                            <button onclick="window.location.href='404page.html'" class="btn btn-primary w-100"
+                                style="padding: 15px;"><i class="fas fa-sync"></i>
+                                Sync Servers</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="grid-3">
+                    <div class="premium-card" data-aos="fade-up">
+                        <h3 class="section-title">Department SLA</h3>
+                        <div class="list-item"><span>Revenue Dept</span><span class="badge success">95% SLA</span></div>
+                        <div class="list-item"><span>Transport Dept</span><span class="badge warning">82% SLA</span>
+                        </div>
+                        <div class="list-item"><span>Health Dept</span><span class="badge success">98% SLA</span></div>
+                        <div class="list-item"><span>Civil Supplies</span><span class="badge danger">70% SLA</span>
+                        </div>
+                    </div>
+
+                    <div class="premium-card" data-aos="fade-up" style="border-left: 4px solid var(--danger);">
+                        <h3 class="section-title text-danger"><i class="fas fa-bell"></i> Urgent Action</h3>
+                        <div class="list-item">
+                            <div class="list-item-content">
+                                <h4>Server Maintenance</h4>
+                                <p>Scheduled down-time tonight at 2 AM.</p>
+                            </div>
+                            <button onclick="window.location.href='404page.html'"
+                                class="btn btn-outline btn-small">Review</button>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-item-content">
+                                <h4>Pending Approvals > 48Hrs</h4>
+                                <p>12 Certificates waiting.</p>
+                            </div>
+                            <button onclick="window.location.href='404page.html'" class="btn btn-primary btn-small">Sign
+                                Now</button>
+                        </div>
+                    </div>
+
+                    <div class="premium-card" data-aos="fade-up">
+                        <h3 class="section-title">Portal Health</h3>
+                        <div class="image-card-wrapper" style="height: 120px;">
+                            <img src="./asset/u10.webp"
+                                alt="Server">
+                        </div>
+                        <h4 style="margin-bottom: 5px;">Servers Running Smoothly</h4>
+                        <p class="text-gray" style="font-size: 13px;">All regional databases are synced perfectly.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 TAB 2: CITIZEN REQUESTS
+            =========================================== -->
+            <div id="tab-requests" class="content-tab">
+                <div class="grid-3">
+                    <div class="stat-card" data-aos="fade-up">
+                        <div class="stat-icon bg-info"><i class="fas fa-folder-open"></i></div>
+                        <div class="stat-details">
+                            <p>New Requests</p>
+                            <h2>145</h2>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-icon bg-warning"><i class="fas fa-hourglass-half"></i></div>
+                        <div class="stat-details">
+                            <p>In Review</p>
+                            <h2>320</h2>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-icon bg-danger"><i class="fas fa-times-circle"></i></div>
+                        <div class="stat-details">
+                            <p>Rejected</p>
+                            <h2>18</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="premium-card mb-30" data-aos="fade-up">
+                    <h3 class="section-title">Incoming Applications Queue</h3>
+                    <div class="table-wrapper">
+                        <table class="premium-table">
+                            <tr>
+                                <th>App ID</th>
+                                <th>Citizen Name</th>
+                                <th>Service Type</th>
+                                <th>Priority</th>
+                                <th>Action</th>
+                            </tr>
+                            <tr>
+                                <td>#APP-10023</td>
+                                <td>Rajesh K.</td>
+                                <td>Birth Certificate</td>
+                                <td><span class="badge danger">High</span></td>
+                                <td><button onclick="window.location.href='404page.html'"
+                                        class="btn btn-primary btn-small">Process</button></td>
+                            </tr>
+                            <tr>
+                                <td>#APP-10024</td>
+                                <td>Meena S.</td>
+                                <td>Income Cert</td>
+                                <td><span class="badge warning">Normal</span></td>
+                                <td><button onclick="window.location.href='404page.html'"
+                                        class="btn btn-primary btn-small">Process</button></td>
+                            </tr>
+                            <tr>
+                                <td>#APP-10025</td>
+                                <td>Abdul R.</td>
+                                <td>Community Cert</td>
+                                <td><span class="badge warning">Normal</span></td>
+                                <td><button onclick="window.location.href='404page.html'"
+                                        class="btn btn-primary btn-small">Process</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="premium-card" data-aos="fade-up" style="border-left: 4px solid var(--danger);">
+                        <h3 class="section-title text-danger">Urgent Escalations</h3>
+                        <div class="list-item">
+                            <div>
+                                <h4>Patta Transfer (Overdue by 5 days)</h4>
+                                <p>App ID: #APP-09911</p>
+                            </div><button onclick="window.location.href='404page.html'"
+                                class="btn btn-danger btn-small">Escalate</button>
+                        </div>
+                        <div class="list-item">
+                            <div>
+                                <h4>Legal Heir Cert (Overdue by 2 days)</h4>
+                                <p>App ID: #APP-09923</p>
+                            </div><button onclick="window.location.href='404page.html'"
+                                class="btn btn-danger btn-small">Escalate</button>
+                        </div>
+                    </div>
+                    <div class="premium-card" data-aos="fade-up">
+                        <h3 class="section-title">Average Processing Time</h3>
+                        <div class="list-item"><span>Revenue Dept</span><strong>2.5 Days</strong></div>
+                        <div class="list-item"><span>Transport Dept</span><strong>1.2 Days</strong></div>
+                        <div class="list-item"><span>Civil Supplies</span><strong>4.0 Days</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 TAB 3: APPROVED SERVICES
+            =========================================== -->
+            <div id="tab-approved" class="content-tab">
+                <div class="grid-2">
+                    <div class="premium-card mb-30" data-aos="fade-up">
+                        <h3 class="section-title">Document Storage Status</h3>
+                        <div class="image-card-wrapper" style="height: 150px;"><img
+                                src="./asset/u33.webp"
+                                alt="Cloud Storage"></div>
+                        <div class="list-item"><span>Cloud Capacity</span><strong>75% Used (1.5 TB)</strong></div>
+                    </div>
+                    <div class="premium-card mb-30" data-aos="fade-up">
+                        <h3 class="section-title">Recent Dispatches (Postal)</h3>
+                        <div class="list-item"><span>Tracking: IN8899201</span><span
+                                class="badge success">Delivered</span></div>
+                        <div class="list-item"><span>Tracking: IN8899202</span><span class="badge warning">In
+                                Transit</span></div>
+                        <div class="list-item"><span>Tracking: IN8899203</span><span
+                                class="badge danger">Returned</span></div>
+                    </div>
+                </div>
+                <div class="premium-card" data-aos="fade-up">
+                    <h3 class="section-title">Recently Approved E-Documents</h3>
+                    <div class="table-wrapper">
+                        <table class="premium-table">
+                            <tr>
+                                <th>App ID</th>
+                                <th>Citizen Name</th>
+                                <th>Approved By</th>
+                                <th>Status</th>
+                                <th>Download</th>
+                            </tr>
+                            <tr>
+                                <td>#APP-09901</td>
+                                <td>Karthik V.</td>
+                                <td>Officer Arun</td>
+                                <td><span class="badge success">Dispatched</span></td>
+                                <td><button onclick="window.location.href='404page.html'"
+                                        class="btn btn-outline btn-small">PDF</button></td>
+                            </tr>
+                            <tr>
+                                <td>#APP-09855</td>
+                                <td>Priya M.</td>
+                                <td>Officer Arun</td>
+                                <td><span class="badge success">E-Signed</span></td>
+                                <td><button onclick="window.location.href='404page.html'"
+                                        class="btn btn-outline btn-small">PDF</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 TAB 4: PAYMENTS
+            =========================================== -->
+            <div id="tab-payments" class="content-tab">
+                <div class="grid-3 mb-30">
+                    <div class="stat-card" data-aos="fade-up">
+                        <div class="stat-icon bg-info"><i class="fas fa-rupee-sign"></i></div>
+                        <div class="stat-details">
+                            <p>Total Tax (Oct)</p>
+                            <h2>₹12.5 Cr</h2>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up">
+                        <div class="stat-icon bg-success"><i class="fas fa-receipt"></i></div>
+                        <div class="stat-details">
+                            <p>Success Txns</p>
+                            <h2>45,020</h2>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up">
+                        <div class="stat-icon bg-danger"><i class="fas fa-undo"></i></div>
+                        <div class="stat-details">
+                            <p>Refunds</p>
+                            <h2>142</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="premium-card mb-30" data-aos="fade-up">
+                    <h3 class="section-title">Recent Tax Payments</h3>
+                    <div class="table-wrapper">
+                        <table class="premium-table">
+                            <tr>
+                                <th>Txn ID</th>
+                                <th>Tax Type</th>
+                                <th>Amount</th>
+                                <th>Method</th>
+                                <th>Status</th>
+                            </tr>
+                            <tr>
+                                <td>TXN-90928</td>
+                                <td>Property Tax</td>
+                                <td>₹4,500</td>
+                                <td>UPI</td>
+                                <td><span class="badge success">Success</span></td>
+                            </tr>
+                            <tr>
+                                <td>TXN-90929</td>
+                                <td>Water Tax</td>
+                                <td>₹850</td>
+                                <td>Credit Card</td>
+                                <td><span class="badge success">Success</span></td>
+                            </tr>
+                            <tr>
+                                <td>TXN-90930</td>
+                                <td>Prof. Tax</td>
+                                <td>₹1,250</td>
+                                <td>Net Banking</td>
+                                <td><span class="badge warning">Pending</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="grid-2">
+                    <div class="premium-card" data-aos="fade-up">
+                        <h3 class="section-title">Refund Queue</h3>
+                        <div class="list-item">
+                            <div>
+                                <h4>Duplicate Payment</h4>
+                                <p>TXN-88001 | ₹4,500</p>
+                            </div><button onclick="window.location.href='404page.html'"
+                                class="btn btn-outline btn-small">Refund</button>
+                        </div>
+                        <div class="list-item">
+                            <div>
+                                <h4>Failed Application</h4>
+                                <p>TXN-88002 | ₹100</p>
+                            </div><button onclick="window.location.href='404page.html'"
+                                class="btn btn-outline btn-small">Refund</button>
+                        </div>
+                    </div>
+                    <div class="premium-card" data-aos="fade-up">
+                        <h3 class="section-title">Gateway Health Status</h3>
+                        <div class="list-item"><span>UPI Payments</span><span class="badge success">100% Uptime</span>
+                        </div>
+                        <div class="list-item"><span>Credit / Debit Cards</span><span class="badge success">99%
+                                Uptime</span></div>
+                        <div class="list-item"><span>Net Banking (SBI)</span><span
+                                class="badge warning">Maintenance</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 TAB 5: FEEDBACK
+            =========================================== -->
+            <div id="tab-feedback" class="content-tab">
+                <div class="grid-3 mb-30">
+                    <div class="stat-card" data-aos="fade-up">
+                        <div class="stat-icon bg-orange"><i class="fas fa-star"></i></div>
+                        <div class="stat-details">
+                            <p>Average Rating</p>
+                            <h2>4.2 / 5</h2>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up">
+                        <div class="stat-icon bg-danger"><i class="fas fa-ticket-alt"></i></div>
+                        <div class="stat-details">
+                            <p>Open Grievances</p>
+                            <h2>45</h2>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up">
+                        <div class="stat-icon bg-success"><i class="fas fa-check"></i></div>
+                        <div class="stat-details">
+                            <p>Resolved</p>
+                            <h2>890</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-2 mb-30">
+                    <div class="premium-card" data-aos="fade-up">
+                        <h3 class="section-title">Recent Grievances</h3>
+                        <div class="list-item">
+                            <div>
+                                <h4>Payment Deducted, App Failed</h4>
+                                <p>CTZ-8890 | High Priority</p>
+                            </div><button onclick="window.location.href='404page.html'"
+                                class="btn btn-danger btn-small">Resolve</button>
+                        </div>
+                        <div class="list-item">
+                            <div>
+                                <h4>Delay in Certificate</h4>
+                                <p>CTZ-1123 | Medium Priority</p>
+                            </div><button onclick="window.location.href='404page.html'"
+                                class="btn btn-outline btn-small">View</button>
+                        </div>
+                    </div>
+                    <div class="premium-card" data-aos="fade-up">
+                        <h3 class="section-title">Positive Feedback</h3>
+                        <div class="list-item">
+                            <div>
+                                <h4>"Very fast process!" <i class="fas fa-star text-orange"></i><i
+                                        class="fas fa-star text-orange"></i><i class="fas fa-star text-orange"></i></h4>
+                                <p>From Ramesh K.</p>
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div>
+                                <h4>"Great UI interface!" <i class="fas fa-star text-orange"></i><i
+                                        class="fas fa-star text-orange"></i><i class="fas fa-star text-orange"></i></h4>
+                                <p>From Deepika M.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-2">
+                    <div class="premium-card" data-aos="fade-up">
+                        <h3 class="section-title">Resolution Metrics</h3>
+                        <div class="list-item"><span>Avg. Time to Resolve</span><strong>1.4 Days</strong></div>
+                        <div class="list-item"><span>First Response Time</span><strong>2 Hours</strong></div>
+                        <div class="list-item"><span>Satisfaction Rate</span><strong class="text-success">88%</strong>
+                        </div>
+                    </div>
+                    <div class="premium-card" data-aos="fade-up">
+                        <h3 class="section-title">Trending Issues (Keywords)</h3>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span class="badge danger">Server Timeout</span>
+                            <span class="badge warning">OTP Delay</span>
+                            <span class="badge success">Smooth UI</span>
+                            <span class="badge danger">Refund Failed</span>
+                            <span class="badge warning">Doc Upload Issue</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 TAB 6: SETTINGS
+            =========================================== -->
+            <div id="tab-settings" class="content-tab">
+                <div class="grid-2 mb-30">
+                    <div class="premium-card" data-aos="fade-up">
+                        <h3 class="section-title">Admin Profile</h3>
+                        <div class="list-item"><span>Name</span><strong>Official Officer</strong></div>
+                        <div class="list-item"><span>Email</span><strong id="set-email">admin@gov.in</strong></div>
+                        <button onclick="window.location.href='404page.html'" class="btn btn-outline w-100 mt-20">Change
+                            Password</button>
+                    </div>
+                    <div class="premium-card" data-aos="fade-up">
+                        <h3 class="section-title">Portal Configuration</h3>
+                        <div class="list-item"><span>Maintenance Mode</span><span class="badge danger">OFF</span></div>
+                        <div class="list-item"><span>New Registrations</span><span class="badge success">Allowed</span>
+                        </div>
+                        <button onclick="window.location.href='404page.html'" class="btn btn-primary w-100 mt-20">Save
+                            Configuration</button>
+                    </div>
+                </div>
+                <div class="grid-2">
+                    <div class="premium-card" data-aos="fade-up">
+                        <h3 class="section-title">Security Logs</h3>
+                        <div class="list-item">
+                            <div>
+                                <h4>Admin Login (Chennai IP)</h4>
+                                <p>Today at 10:00 AM</p>
+                            </div><span class="badge success">Success</span>
+                        </div>
+                        <div class="list-item">
+                            <div>
+                                <h4>Failed Login Attempt (Delhi IP)</h4>
+                                <p>Yesterday at 2:00 AM</p>
+                            </div><span class="badge danger">Blocked</span>
+                        </div>
+                        <button onclick="window.location.href='404page.html'" class="btn btn-outline w-100 mt-10">View
+                            Full Logs</button>
+                    </div>
+                    <div class="premium-card" data-aos="fade-up">
+                        <h3 class="section-title">Notifications Preferences</h3>
+                        <div class="list-item"><span>Email Alerts for Escalations</span><input type="checkbox" checked
+                                style="accent-color: var(--orange-primary); width:18px; height:18px;"></div>
+                        <div class="list-item"><span>SMS Alerts for Server Down</span><input type="checkbox" checked
+                                style="accent-color: var(--orange-primary); width:18px; height:18px;"></div>
+                        <div class="list-item"><span>Weekly Report Auto-Email</span><input type="checkbox"
+                                style="accent-color: var(--orange-primary); width:18px; height:18px;"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let storedEmail = sessionStorage.getItem('userEmail') || 'admin@gov.in';
+            let extractedName = storedEmail.split('@')[0];
+            extractedName = extractedName.charAt(0).toUpperCase() + extractedName.slice(1);
+
+            const nameDisplay = document.getElementById("userNameDisplay");
+            const emailDisplay = document.getElementById("userEmailDisplay");
+            const setAdminEmail = document.getElementById("set-email");
+
+            if (nameDisplay) nameDisplay.textContent = extractedName;
+            if (emailDisplay) emailDisplay.textContent = storedEmail;
+            if (setAdminEmail) setAdminEmail.textContent = storedEmail;
+
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ duration: 800, once: true, offset: 50, easing: 'ease-out-cubic' });
+            }
+            initAdminChart();
+        });
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('mobile-open');
+            if (sidebar.classList.contains('mobile-open')) {
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            } else {
+                overlay.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function switchTab(tabId, element, pageTitle) {
+            document.querySelectorAll('.content-tab').forEach(tab => tab.classList.remove('active-tab'));
+            document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active-tab');
+            element.classList.add('active');
+            document.getElementById('dynamic-page-title').innerText = pageTitle;
+
+            if (typeof AOS !== 'undefined') { setTimeout(() => { AOS.refresh(); }, 100); }
+            if (window.innerWidth <= 992) { toggleSidebar(); }
+        }
+
+        function logout() {
+            sessionStorage.removeItem('userEmail');
+            window.location.replace("login.html");
+        }
+
+        function initAdminChart() {
+            const ctx = document.getElementById('serviceChart');
+            if (ctx && typeof Chart !== 'undefined') {
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                        datasets: [{
+                            label: 'Service Requests',
+                            data: [120, 190, 150, 220, 180, 90, 50],
+                            backgroundColor: '#ff7f00',
+                            borderRadius: 6,
+                            barPercentage: 0.6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: { beginAtZero: true, grid: { color: '#e2e8f0' } },
+                            x: { grid: { display: false } }
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>
