@@ -278,7 +278,6 @@
   right: -20px;
 }
 .check-2 {
-  bottom: 40px;
   left: -40px;
 }
 
@@ -449,7 +448,7 @@
   }
 
   .check-2 {
-    bottom: -15px;
+    bottom: -2px;
     left: 0;
   }
 }

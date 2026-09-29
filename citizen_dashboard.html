@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Citizen Dashboard | Digital Citizen Portal</title>
-     
+
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-     
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-     
+
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-     
+
     <link rel="stylesheet" href="citizen_dashboard.css">
-     
+
     <script>
         if (!sessionStorage.getItem('userEmail')) {
             window.location.replace("login.html");
@@ -24,10 +24,10 @@
 
 <body>
 
-     
+
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
-     
+
     <nav class="sidebar" id="sidebar">
         <div class="logo-container">
             <a href="index.html"><img src="./asset/orange-logo.webp" alt="logo"></a>
@@ -57,7 +57,7 @@
         </div>
     </nav>
 
-     
+
     <main class="main-content">
         <header class="topbar">
             <div class="topbar-left">
@@ -154,8 +154,7 @@
                 <div class="grid-3">
                     <div class="premium-card" data-aos="fade-up">
                         <h3 class="section-title">DigiLocker Integration</h3>
-                        <div class="image-card-wrapper" style="height: 120px;"><img
-                                src="./asset/u8.webp"
+                        <div class="image-card-wrapper" style="height: 120px;"><img src="./asset/u8.webp"
                                 alt="Cloud Storage"></div>
                         <h4 style="margin-bottom: 5px;">Your documents are safe!</h4>
                         <p class="text-gray" style="font-size: 13px;">Aadhar and PAN are successfully linked.</p>
@@ -264,8 +263,7 @@
                     </div>
                     <div class="premium-card" data-aos="fade-up">
                         <h3 class="section-title">Need Help with Application?</h3>
-                        <div class="image-card-wrapper" style="height: 150px;"><img
-                                src="./asset/u26.webp"
+                        <div class="image-card-wrapper" style="height: 150px;"><img src="./asset/u26.webp"
                                 alt="Support"></div>
                         <p class="text-gray mb-15">If your application is delayed by more than 15 days, you can raise a
                             grievance ticket.</p>
@@ -273,7 +271,7 @@
                                 class="fas fa-headset"></i> Contact Support</button>
                     </div>
                 </div>
-                 
+
                 <div class="grid-2">
                     <div class="premium-card" data-aos="fade-up">
                         <h3 class="section-title text-info"><i class="fas fa-save"></i> Draft Applications</h3>
@@ -376,7 +374,7 @@
                         </table>
                     </div>
                 </div>
-                 
+
                 <div class="grid-2">
                     <div class="premium-card" data-aos="fade-up" style="border-left: 4px solid var(--danger);">
                         <h3 class="section-title text-danger"><i class="fas fa-exclamation-triangle"></i> Expiring Soon
@@ -468,7 +466,7 @@
                         </div>
                     </div>
                 </div>
-                 
+
                 <div class="grid-2">
                     <div class="premium-card" data-aos="fade-up">
                         <h3 class="section-title">Saved Payment Methods</h3>
@@ -515,18 +513,14 @@
             <div id="tab-announcements" class="content-tab">
                 <div class="grid-2 mb-30">
                     <div class="premium-card" data-aos="fade-up">
-                        <div class="image-card-wrapper"><img
-                                src="./asset/u28.webp"
-                                alt="News"></div>
+                        <div class="image-card-wrapper"><img src="./asset/u28.webp" alt="News"></div>
                         <h3 class="section-title mb-10">New Scholarship Scheme Launched</h3>
                         <p class="text-gray mb-15">The government has introduced a new scholarship for higher education.
                             Eligible students can apply through the portal starting next week.</p>
                         <button onclick="window.location.href='404page.html'" class="btn btn-outline">Read More</button>
                     </div>
                     <div class="premium-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="image-card-wrapper"><img
-                                src="./asset/u5.webp"
-                                alt="Tax"></div>
+                        <div class="image-card-wrapper"><img src="./asset/u5.webp" alt="Tax"></div>
                         <h3 class="section-title mb-10">Property Tax Deadline Extended</h3>
                         <p class="text-gray mb-15">The deadline for paying the property tax without penalty has been
                             extended to November 30th. Pay online to avail 5% cashback.</p>
@@ -534,7 +528,7 @@
                             Now</button>
                     </div>
                 </div>
-                 
+
                 <div class="grid-2">
                     <div class="premium-card" data-aos="fade-up">
                         <h3 class="section-title">Government Press Releases</h3>
@@ -591,7 +585,7 @@
                             Password</button>
                     </div>
                 </div>
-                 
+
                 <div class="grid-2">
                     <div class="premium-card" data-aos="fade-up">
                         <h3 class="section-title">Linked Family Members</h3>
@@ -640,8 +634,22 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
- 
-            let storedEmail = sessionStorage.getItem('userEmail') || 'citizen@mail.com';
+
+            let storedEmail = sessionStorage.getItem('userEmail');
+            let storedRole = sessionStorage.getItem('userRole');
+
+            if (!storedEmail) {
+                alert("Please Login First to Access the Citizen Dashboard!");
+                window.location.replace("login.html");
+                return;
+            }
+
+            if (storedRole !== "citizen") {
+                alert("Access Denied! You are logged in as an Admin.");
+                window.location.replace("admin_dashboard.html");
+                return;
+            }
+
             let extractedName = storedEmail.split('@')[0];
             extractedName = extractedName.charAt(0).toUpperCase() + extractedName.slice(1);
 
@@ -655,19 +663,19 @@
             if (setName) setName.textContent = extractedName;
             if (setEmail) setEmail.textContent = storedEmail;
 
- 
+
             if (typeof AOS !== 'undefined') {
                 AOS.init({ duration: 800, once: true, offset: 50, easing: 'ease-out-cubic' });
             }
 
- 
             initCitizenChart();
         });
 
- 
+
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('sidebarOverlay');
+
             sidebar.classList.toggle('mobile-open');
             if (sidebar.classList.contains('mobile-open')) {
                 overlay.classList.add('show');
@@ -678,7 +686,7 @@
             }
         }
 
- 
+
         function switchTab(tabId, element, pageTitle) {
             document.querySelectorAll('.content-tab').forEach(tab => tab.classList.remove('active-tab'));
             document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
@@ -687,20 +695,18 @@
             element.classList.add('active');
             document.getElementById('dynamic-page-title').innerText = pageTitle;
 
- 
             if (typeof AOS !== 'undefined') { setTimeout(() => { AOS.refresh(); }, 100); }
 
- 
             if (window.innerWidth <= 992) { toggleSidebar(); }
         }
 
- 
+
         function logout() {
             sessionStorage.removeItem('userEmail');
             window.location.replace("login.html");
         }
 
- 
+
         function initCitizenChart() {
             const ctx = document.getElementById('citizenChart');
             if (ctx && typeof Chart !== 'undefined') {
@@ -715,7 +721,7 @@
                             backgroundColor: 'rgba(255, 127, 0, 0.15)',
                             borderWidth: 3,
                             fill: true,
-                            tension: 0.4,  
+                            tension: 0.4,
                             pointBackgroundColor: '#ffffff',
                             pointBorderColor: '#ff7f00',
                             pointBorderWidth: 2,
@@ -724,7 +730,7 @@
                     },
                     options: {
                         responsive: true,
-                        maintainAspectRatio: false,  
+                        maintainAspectRatio: false,
                         plugins: { legend: { display: false } },
                         scales: {
                             y: {

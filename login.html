@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Digital Citizen Portal</title>
 
-     
+
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
 
-     
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-     
+
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
@@ -42,20 +42,20 @@
             overflow-x: hidden;
         }
 
-         
+
         .login-split-container {
             display: flex;
             min-height: 100vh;
             width: 100%;
         }
 
-         
+
         .login-left {
             flex: 1;
             position: relative;
             background: url('./asset/u39.webp') center/cover no-repeat;
             display: flex;
-             
+
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -71,7 +71,7 @@
             z-index: 1;
         }
 
-         
+
         .left-content {
             position: relative;
             z-index: 10;
@@ -108,7 +108,7 @@
             margin: 0 auto;
         }
 
-         
+
         .login-right {
             flex: 1;
             max-width: 650px;
@@ -120,7 +120,7 @@
             position: relative;
         }
 
-         
+
         .back-home {
             position: absolute;
             top: 40px;
@@ -137,9 +137,9 @@
             border-radius: 30px;
             transition: all 0.3s ease;
             z-index: 9999;
-             
+
             background: rgba(11, 19, 41, 0.5);
-             
+
         }
 
         .back-home:hover {
@@ -148,14 +148,14 @@
             border-color: var(--orange-primary);
         }
 
-         
+
         .login-form-box {
             width: 100%;
             position: relative;
             z-index: 10;
         }
 
-         
+
         .form-header {
             margin-bottom: 40px;
         }
@@ -177,7 +177,7 @@
             margin-bottom: 20px;
         }
 
-         
+
         .input-group {
             margin-bottom: 25px;
             position: relative;
@@ -247,7 +247,7 @@
             color: var(--orange-primary);
         }
 
-         
+
         .toggle-password {
             position: absolute;
             right: 18px;
@@ -266,7 +266,7 @@
             display: none !important;
         }
 
-         
+
         .error-message {
             color: var(--error-red);
             font-size: 13px;
@@ -289,7 +289,7 @@
             display: block;
         }
 
-         
+
         .form-options {
             display: flex;
             justify-content: space-between;
@@ -324,7 +324,7 @@
             color: var(--orange-primary);
         }
 
-         
+
         .submit-btn {
             width: 100%;
             padding: 16px;
@@ -352,7 +352,7 @@
             transform: translateX(5px);
         }
 
-         
+
         .divider {
             display: flex;
             align-items: center;
@@ -424,7 +424,7 @@
             text-decoration: underline;
         }
 
-         
+
         @media (max-width: 992px) {
             .login-right {
                 padding: 40px;
@@ -437,7 +437,7 @@
 
         @media (max-width: 768px) {
 
-             
+
             .login-left {
                 display: none !important;
             }
@@ -447,7 +447,7 @@
                 max-width: 100%;
                 padding: 30px 20px;
                 justify-content: center;
-                 
+
             }
 
             .login-form-box {
@@ -468,7 +468,7 @@
             }
         }
 
-        .logo{
+        .logo {
             width: 140px;
         }
     </style>
@@ -478,7 +478,7 @@
 
     <div class="login-split-container">
 
-         
+
         <div class="login-left">
             <div class="left-overlay"></div>
             <div class="left-content" data-aos="zoom-in" data-aos-duration="1200">
@@ -488,7 +488,7 @@
             </div>
         </div>
 
-         
+
         <div class="login-right">
 
             <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
@@ -503,7 +503,7 @@
 
                 <form id="citizenLoginForm" novalidate>
 
-                     
+
                     <div class="input-group" id="roleGroup">
                         <label>Account Type</label>
                         <div class="input-wrapper">
@@ -517,7 +517,7 @@
                         <div class="error-message">Please select your account type to proceed.</div>
                     </div>
 
-                     
+
                     <div class="input-group" id="emailGroup">
                         <label>Email Address</label>
                         <div class="input-wrapper">
@@ -527,7 +527,7 @@
                         <div class="error-message">Please enter a valid email address.</div>
                     </div>
 
-                     
+
                     <div class="input-group" id="passwordGroup">
                         <label>Password</label>
                         <div class="input-wrapper">
@@ -538,13 +538,13 @@
                         <div class="error-message">Password must be at least 6 characters long.</div>
                     </div>
 
-                     
+
                     <div class="form-options">
                         <label class="remember"><input type="checkbox"> Remember me</label>
                         <a href="404page.html" class="forgot-link">Forgot Password?</a>
                     </div>
 
-                     
+
                     <button type="submit" class="submit-btn">
                         <span>Secure Login</span> <i class="fas fa-arrow-right"></i>
                     </button>
@@ -552,7 +552,7 @@
 
                 <div class="divider">Or Authenticate With</div>
 
-                 
+
                 <div class="social-logins">
                     <a href="404page.html" class="social-btn" title="DigiLocker"><i class="fa-solid fa-cloud"></i></a>
                     <a href="404page.html" class="social-btn" title="Google"><i class="fab fa-google"></i></a>
@@ -567,12 +567,12 @@
         </div>
     </div>
 
-     
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
 
- 
+
             if (typeof AOS !== 'undefined') {
                 AOS.init({ once: true, offset: 50 });
             }
@@ -586,7 +586,7 @@
             const emailGroup = document.getElementById("emailGroup");
             const passwordGroup = document.getElementById("passwordGroup");
 
- 
+
             const togglePassword = document.getElementById("togglePassword");
             if (togglePassword) {
                 togglePassword.addEventListener("click", function () {
@@ -597,12 +597,12 @@
                 });
             }
 
- 
+
             roleInput.addEventListener("change", () => roleGroup.classList.remove("error"));
             emailInput.addEventListener("input", () => emailGroup.classList.remove("error"));
             passwordInput.addEventListener("input", () => passwordGroup.classList.remove("error"));
 
- 
+
             if (loginForm) {
                 loginForm.addEventListener("submit", (e) => {
                     e.preventDefault();
@@ -614,8 +614,8 @@
                     if (passwordInput.value.trim().length < 6) { passwordGroup.classList.add("error"); isValid = false; }
 
                     if (isValid) {
- 
                         sessionStorage.setItem('userEmail', emailInput.value.trim());
+                        sessionStorage.setItem('userRole', roleInput.value);
 
                         const btn = document.querySelector(".submit-btn");
                         btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> <span>Authenticating...</span>';
@@ -623,11 +623,8 @@
                         btn.style.pointerEvents = "none";
 
                         setTimeout(() => {
-                            if (roleInput.value === "citizen") {
-                                window.location.href = "citizen_dashboard.html";
-                            } else if (roleInput.value === "official") {
-                                window.location.href = "admin_dashboard.html";
-                            }
+                            if (roleInput.value === "citizen") window.location.href = "citizen_dashboard.html";
+                            else if (roleInput.value === "official") window.location.href = "admin_dashboard.html";
                         }, 1500);
                     }
                 });
